@@ -1,0 +1,23 @@
+<div class="popup-overlay" id="popup-overlay" onclick="closePopup()">
+    <div class="popup-window" onclick="event.stopPropagation()">
+        <button class="popup-close" hx-get="/popup/close" hx-target="#popup-container" hx-swap="innerHTML"
+            onclick="document.getElementById('popup-container').innerHTML=''">
+            ✕
+        </button>
+        <img src="/static/images/{{ filename }}" class="popup-image" onclick="event.stopPropagation()">
+    </div>
+</div>
+<script>
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            const popup = document.getElementById("popup-overlay");
+            if (popup) {
+                document.getElementById("popup-container").innerHTML = "";
+            }
+        }
+    });
+
+    function closePopup() {
+        document.getElementById("popup-container").innerHTML = "";
+    }
+</script>

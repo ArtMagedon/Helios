@@ -1,0 +1,24 @@
+[Unit]
+Description=Summary_site
+After=network.target
+
+[Service]
+Type=simple
+
+WorkingDirectory=/home/miko/site-card
+
+ExecStart=/home/miko/site-card/venv/bin/python /home/miko/site-card/app.py
+
+Restart=always
+RestartSec=5
+User=miko
+
+Environment=PATH=/home/miko/site-card/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+StandardOutput=journal
+StandardError=journal
+
+SyslogIdentifier=site-card
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,98 @@
+<div class="content-wrapper" id="content-wrapper">
+    <p class="headL">MPWE</p>
+    <div class="contex">
+        <p class="text2 pr">
+            MSWE - двойной качающийся экструдер, для FFF 3д принтеров. Основная его идея в том, что он имеет 2
+            термодинамически независимых сопла, расположенных таким образом что в момент печати соплом второе всегда
+            находится выше рабочего и упирается в силиконоввй бампер
+        </p>
+        <div class="card-stack">
+            <img src="/~s563212/lab1/static/images/MPWE/mswe_1.png" class="card center">
+            <img src="/~s563212/lab1/static/images/MPWE/mswe_2.png" class="card left">
+            <img src="/~s563212/lab1/static/images/MPWE/mswe_sliced.png" class="card right">
+        </div>
+
+        <p class="text2 pr">
+            Прир разработке делался акцент акцент на эффективность данного решения, потому экструдер может похвастаться
+            низким весом, менее 250гр, что позволяет печатать на высоких ускорениях, а также малыми размерами, что
+            способствует простой установке. Этого удалось добиться за счет использования 1 подающего механизма на 2
+            сопла.
+        </p>
+    </div>
+    <button class="image-huge" hx-get="/popup/photo/MPWE/stend_peresvet.png" hx-target="#popup-container"
+        hx-swap="innerHTML" style="margin-top: 20px;  cursor: zoom-in;">
+        <img src="/~s563212/lab1/static/images/MPWE/stend_peresvet.png">
+    </button>
+
+    <style>
+        .card-stack {
+            position: relative;
+            width: 900px;
+            height: 500px;
+            margin: auto;
+            overflow: hidden;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            position: absolute;
+            width: auto;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 28px;
+            margin-top: 20px;
+            transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .center {
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .left {
+            left: 60%;
+            transform:
+                translateX(-120%) scale(0.92) rotate(-5deg);
+            filter: brightness(0.85);
+            z-index: 2;
+        }
+
+        .right {
+            left: 40%;
+            transform:
+                translateX(20%) scale(0.92) rotate(5deg);
+            filter: brightness(0.85);
+            z-index: 2;
+        }
+
+        .center:hover {
+            transform:
+                translateY(-0.5%) translateX(-50%) scale(1.05);
+            z-index: 5;
+            filter: brightness(1);
+        }
+
+        .card-stack:has(.left:hover) .center,
+        .card-stack:has(.right:hover) .center {
+            filter: brightness(0.85);
+            z-index: 3;
+        }
+
+        .left:hover {
+            transform:
+                translateX(-140%) scale(1.05) rotate(-2deg);
+            z-index: 5;
+            filter: brightness(1);
+        }
+
+        .right:hover {
+            transform:
+                translateX(40%) scale(1.05) rotate(2deg);
+            z-index: 5;
+            filter: brightness(1);
+        }
+    </style>
+</div>

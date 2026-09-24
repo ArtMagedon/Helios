@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    <script src="/static/js/htmx.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style_base.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div id="popup-container"></div>
+
+<body>
+    <header class="header">
+
+        <div class="header-left">
+            <img src="/static/images/logo/logo-color.png" class="logo-header">
+        </div>
+
+        <div class="header-center">
+
+            <button class="nav-button" hx-get="/pages/home" hx-swap="outerHTML"
+                hx-target="#content-wrapper">Главная</button>
+
+            <div class="dropdown">
+                <button class="nav-button">Miko Smart</button>
+
+                <div class="dropdown-content">
+                    <a href="#" hx-get="/pages/MS/ISCOS" hx-swap="outerHTML" hx-target="#content-wrapper">И.С.К.О.С.</a>
+                    <a href="#" hx-get="/pages/MS/MSCOM" hx-swap="outerHTML" hx-target="#content-wrapper">MSCOM</a>
+                    <a href="#" hx-get="/pages/MS/MSDisplay" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        hidden>MSDisplay</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="nav-button">Miko Print</button>
+
+                <div class="dropdown-content">
+                    <a href="#" hx-get="/pages/MP/MPCDE" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        hidden>MPCDE</a>
+                    <a href="#" hx-get="/pages/MP/MPWE" hx-swap="outerHTML" hx-target="#content-wrapper">MPWE</a>
+                    <a href="#" hx-get="/pages/MP/MPTP" hx-swap="outerHTML" hx-target="#content-wrapper">MPTP</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="nav-button">Другие проекты</button>
+
+                <div class="dropdown-content">
+                    <a href="#" hx-get="/pages/projects/webConfig" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">WebConfig</a>
+                    <a href="#" hx-get="/pages/projects/alwaysON_Net" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        hidden>+AlwaysON Net</a>
+                    <a href="#" hx-get="/pages/projects/API_Tester" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        >API Tester</a>
+                    <a href="#" hx-get="/pages/projects/surveyerBot" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        hidden>Библиотекарь ТГ бот</a>
+                    <a href="#" hx-get="/pages/projects/archiveBot" hx-swap="outerHTML" hx-target="#content-wrapper"
+                        hidden>Архиватор ТГ бот</a>
+                    <a href="#" hx-get="/pages/projects/desktopController" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Настольный узел контроля</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="nav-button">О себе</button>
+
+                <div class="dropdown-content">
+                    <a href="#" hx-get="/pages/aboutme/aboutme" hx-swap="outerHTML" hx-target="#content-wrapper">О
+                        себе</a>
+                    <a href="#" hx-get="/pages/aboutme/summary" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Резюме</a>
+                    <a href="#" hx-get="/pages/aboutme/academic-experience" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Образование и опыт работы</a>
+                    <a href="#" hx-get="/pages/aboutme/professional_achievement" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Проф. достижения и дипломы</a>
+                    <a href="#" hx-get="/pages/motivation" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Мотивационное письмо</a>
+                    <a href="#" hx-get="/pages/aboutme/contacts" hx-swap="outerHTML"
+                        hx-target="#content-wrapper">Контакты</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+        </div>
+
+    </header>
+
+    <div class="content-wrapper" id="content-wrapper">
+        <div hx-get="/pages/{{ page }}" hx-swap="outerHTML" hx-target="#content-wrapper" hx-trigger="load"> </div>
+    </div>
+
+    <a href="/motivation" class="corner-link" style="right: 10px; bottom: 70px;" >
+        <img src="/static/images/link.png" alt="link">
+        <span class="tooltip" lang="ru" style="transform: translateX(calc(-100% - 30px)) translateY(calc(100% + 5px));">Мотивационное<br>письмо
+        </span>
+    </a>
+
+    <a href="/file/portfolio" class="corner-link" download style="right: 10px; bottom: 10px;" >
+        <img src="/static/images/zip.png" alt="link">
+        <span class="tooltip" lang="ru" style="transform: translateX(calc(-100% - 30px)) translateY(calc(100% + 5px));">Скачать <br> портфолио
+    </a>
+
+
+    
+</body>
+
+</html>
