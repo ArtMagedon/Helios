@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Попов А.Р</title>
+    <meta charset="utf-8">
+</head>
+<style>
+    .equation {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .equation input {
+        width: 6ch;
+        box-sizing: border-box;
+    }
+
+    .equation span {
+        white-space: nowrap;
+    }
+</style>
+
+<body>
+
+    <h4>artmagedon</h4>
+    <div class="equation">
+        <input type="number" id="n1">
+        <span>x +</span>
+        <input type="number" id="n2">
+        <span>y =</span>
+        <input type="number" id="n3">
+    </div>
+    <div class="equation">
+        <input type="number" id="n4">
+        <span>x +</span>
+        <input type="number" id="n5">
+        <span>y =</span>
+        <input type="number" id="n6">
+    </div>
+    <div style="margin-top: 20px;">
+        <input type="number" style="width: 6ch;" value="" id="result1">
+        <input type="number" style="width: 6ch;" value="" id="result2">
+    </div>
+    <button id="bt" onclick="
+                               
+    // строка ниже сработает если в title вы напишете свой логин
+    // document.querySelector('h4').textContent = document.title;
+    
+    /* извлечение данных */  
+    const n1 = Number(document.querySelector('#n1').value);
+    const n2 = Number(document.querySelector('#n2').value); 
+    const n3 = Number(document.querySelector('#n3').value);
+    const n4 = Number(document.querySelector('#n4').value); 
+    const n5 = Number(document.querySelector('#n5').value);
+    const n6 = Number(document.querySelector('#n6').value); 
+       
+    const result1 = (n3 * n5 - n2 * n6) / (n1 * n5 - n2 * n4);
+    const result2 = (n1 * n6 - n3 * n4) / (n1 * n5 - n2 * n4);                
+
+
+    document.querySelector('#result1').value = result1;
+    document.querySelector('#result2').value = result2;                                                           
+    ">Выполнить задание</button>
+</body>
+
+</html>
