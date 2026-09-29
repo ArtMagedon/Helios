@@ -51,18 +51,46 @@ if [ -n "$LOCAL_CHANGES" ]; then
         exit 1
     fi
 
-    echo "Adding local changes..."
+	echo "Adding local changes..."
 
-    git add -A
+	git add -A
 
-    echo "Creating commit..."
+	CHANGED_FILES=$(git diff --cached --name-status)
+	FILE_COUNT=$(git diff --cached --name-only | wc -l)
 
-    if git commit -m "Update website"; then
-        echo "Local changes committed."
-    else
-        echo "ERROR: Failed to create commit."
-        exit 1
-    fi
+	if [ "$FILE_COUNT" -eq 1 ]; then
+		STATUS=$(echo "$CHANGED_FILES" | awk '{print $1}')
+		FILE=$(echo "$CHANGED_FILES" | cut -f2-)
+
+		case "$STATUS" in
+		    A)
+		        COMMIT_MESSAGE="Added: $FILE"
+		        ;;
+		    M)
+		        COMMIT_MESSAGE="Modified: $FILE"
+		        ;;
+		    D)
+		        COMMIT_MESSAGE="Deleted: $FILE"
+		        ;;
+		    R*)
+		        COMMIT_MESSAGE="Renamed: $FILE"
+		        ;;
+		    *)
+		        COMMIT_MESSAGE="Changed: $FILE"
+		        ;;
+		esac
+	else
+		COMMIT_MESSAGE="Update directory"
+	fi
+
+	echo "Commit message: $COMMIT_MESSAGE"
+
+	if git commit -m "$COMMIT_MESSAGE"; then
+		echo "Local changes committed."
+	else
+		echo "ERROR: Failed to create commit."
+		exit 1
+	fi
 
     echo "Uploading changes to remote repository..."
 
