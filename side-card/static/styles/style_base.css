@@ -224,7 +224,7 @@
 }
 
 body {
-    background-image: url('/~s563212/lab1/static/images/ph1.jpg');
+    background-image: url('../images/ph1.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
